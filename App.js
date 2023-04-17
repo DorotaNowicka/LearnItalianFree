@@ -25,7 +25,7 @@ import TestScreen from "./app/screens/TestScreen";
 import LocalizationTest from "./app/screens/LocalizationTest";
 
 export default function App() {
-  console.log("App executed123");
+  console.log("App executed");
 
   // return <ViewImageScreen />;
   //return <WelcomeScreen />;
