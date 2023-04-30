@@ -23,6 +23,14 @@ import MainScreen from "./app/screens/MainScreen";
 import LogInScreen from "./app/screens/LogInScreen";
 import TestScreen from "./app/screens/TestScreen";
 import LocalizationTest from "./app/screens/LocalizationTest";
+import RegisterScreen from "./app/screens/RegisterScreen";
+
+import AuthNavigator from "./app/navigation/AuthNavigator";
+
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import navigationTheme from "./app/navigation/navigationTheme";
 
 export default function App() {
   console.log("App executed");
@@ -30,14 +38,21 @@ export default function App() {
   // return <ViewImageScreen />;
   //return <WelcomeScreen />;
   //return <MessagesScreen />;
-  // return <MyAccountScreen />;
+  //return <MyAccountScreen />;
   //return <ViewImageScreen />;
   //return <QuickCreateScreen />;
-  return <MainScreen />;
+  //return <MainScreen />;
   // return <LogInScreen />;
-  //return <TestScreen />;
+  return <TestScreen />;
   // return <LocalizationTest />;
   // return <ListeningDetailsScreen />;
+  // return <RegisterScreen />;
+
+  // return (
+  //   <NavigationContainer theme={navigationTheme}>
+  //     <AuthNavigator />
+  //   </NavigationContainer>
+  // );
 }
 
 const styles = StyleSheet.create({

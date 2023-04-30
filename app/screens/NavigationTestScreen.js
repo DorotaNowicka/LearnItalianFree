@@ -4,14 +4,23 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Screen from "../components/Screen";
 import AppButton from "../components/AppButton";
 import defaultStyles from "../config/styles";
-import AuthNavigator from "../navigation/AuthNavigator";
 
 function TestScreen(props) {
+  const Link = () => {
+    const navigation = useNavigation();
+
+    return (
+      <AppButton
+        title="Click"
+        onPress={() => navigation.navigate("TweetDetails")}
+      />
+    );
+  };
+
   const Tweets = ({ navigation }) => (
     <Screen>
       <Text>Tweets</Text>
@@ -59,25 +68,32 @@ function TestScreen(props) {
     </Screen>
   );
 
-  const Tab = createMaterialTopTabNavigator();
+  const Tab = createBottomTabNavigator();
   const TabNavigator = () => (
     <Tab.Navigator
-      screenOptions={{
-        tabBarLabelStyle: { fontSize: 18 },
-        tabBarActiveTintColor: "black",
-        tabBarInactiveTintColor: "grey"
+      tabBarOptions={{
+        activeBackgroundColor: defaultStyles.colors.primary,
+        activeTintColor: defaultStyles.colors.white,
+        inactiveBackgroundColor: defaultStyles.colors.medium,
+        inactiveTintColor: defaultStyles.colors.black
       }}
     >
-      <Tab.Screen name="Feed" component={StackNavigator} />
+      <Tab.Screen
+        name="Feed"
+        component={StackNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons name="home" size={size} color={color} />
+          )
+        }}
+      />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );
   return (
-    <Screen>
-      <NavigationContainer>
-        <TabNavigator />
-      </NavigationContainer>
-    </Screen>
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
 

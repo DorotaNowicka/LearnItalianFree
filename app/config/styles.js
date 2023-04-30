@@ -11,5 +11,17 @@ export default {
   bgimage: {
     flex: 1,
     height: "100%"
+  },
+  logo: {
+    width: 180,
+    height: 140,
+    alignSelf: "center",
+    marginTop: 0,
+    marginBottom: 0
+  },
+  logoContainer: {
+    position: "absolute",
+    top: 50,
+    alignItems: "center"
   }
 };

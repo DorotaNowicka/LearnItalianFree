@@ -30,7 +30,7 @@ function ListeningDetailsScreen(props) {
         <AppText style={styles.prize}>$100</AppText>
         <View style={styles.userContainer}>
           <ListItem
-            image={require("C:/Users/Dorota/Desktop/MakeAppDone/MakeItDone/assets/mosh.jpg")}
+            image={require("C:/Users/Dorota/Desktop/MakeAppDone/LearnItalianFree/assets/mosh.jpg")}
             title="Mosh Whatever"
             subTitle="5 Listings"
           />
