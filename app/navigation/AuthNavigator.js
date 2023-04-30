@@ -15,6 +15,7 @@ const forFade = ({ current }) => ({
 
 const AuthNavigator = () => (
   <Stack.Navigator
+    mode="modal"
     screenOptions={{
       headerShown: false
     }}
@@ -28,7 +29,7 @@ const AuthNavigator = () => (
     <Stack.Screen
       name="Register"
       component={RegisterScreen}
-      options={{ cardStyleInterpolator: forFade }}
+      //  options={{ cardStyleInterpolator: forFade }}
     />
   </Stack.Navigator>
 );

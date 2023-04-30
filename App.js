@@ -31,6 +31,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import navigationTheme from "./app/navigation/navigationTheme";
+import TabNavigator from "./app/navigation/TabNavigator";
+import AccountNavigator from "./app/navigation/AccountNavigation";
+import MainNavigator from "./app/navigation/MainNavigation";
 
 export default function App() {
   console.log("App executed");
@@ -41,18 +44,18 @@ export default function App() {
   //return <MyAccountScreen />;
   //return <ViewImageScreen />;
   //return <QuickCreateScreen />;
-  //return <MainScreen />;
+  // return <MainScreen />;
   // return <LogInScreen />;
-  return <TestScreen />;
+  // return <TestScreen />;
   // return <LocalizationTest />;
   // return <ListeningDetailsScreen />;
   // return <RegisterScreen />;
 
-  // return (
-  //   <NavigationContainer theme={navigationTheme}>
-  //     <AuthNavigator />
-  //   </NavigationContainer>
-  // );
+  return (
+    <NavigationContainer>
+      <MainNavigator />
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

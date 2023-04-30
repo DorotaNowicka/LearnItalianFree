@@ -24,11 +24,12 @@ const menuItems = [
     icon: {
       name: "email",
       backgroundColor: colors.secondary
-    }
+    },
+    targetScreen: "Messages"
   }
 ];
 
-function MyAccountScreen(props) {
+function MyAccountScreen({ navigation }) {
   const [imageUri, setImageUri] = useState("../assets/mosh.jpg");
 
   const reqeustPermission = async () => {
@@ -67,7 +68,7 @@ function MyAccountScreen(props) {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
-              onPress={() => console.log(item.title)}
+              onPress={() => navigation.navigate(item.targetScreen)}
               IconComponent={
                 <Icon
                   name={item.icon.name}

@@ -5,7 +5,8 @@ import {
   Image,
   StyleSheet,
   ImageBackground,
-  Text
+  Text,
+  Button
 } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -17,6 +18,8 @@ import AppButton from "../components/AppButton";
 import { Entypo } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import MenuButton from "../components/MenuButton";
+import routes from "../navigation/routes";
 
 const InitialMenuItems = [
   {
@@ -49,7 +52,7 @@ const InitialMenuItems = [
   }
 ];
 
-function MainScreen(props) {
+function MainScreen({ navigation }) {
   const [menuItems, setOptions] = useState(InitialMenuItems);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -64,7 +67,26 @@ function MainScreen(props) {
         resizeMode="cover"
         style={defaultStyles.bgimage}
       >
-        <View style={styles.closeIcon}>
+        <View style={styles.menuContainer}>
+          <MenuButton
+            icon="menu"
+            onPress={() => navigation.navigate(routes.MAIN)}
+            backgroundColor="menu"
+          ></MenuButton>
+          <MenuButton
+            icon="draw-pen"
+            onPress={() => navigation.navigate(routes.CONFIGURE)}
+            backgroundColor="secondary"
+          ></MenuButton>
+          <MenuButton
+            icon="paper-plane"
+            materialCommunity={false}
+            entypo={true}
+            onPress={() => navigation.navigate(routes.QUICK_CREATE)}
+            backgroundColor="good"
+          ></MenuButton>
+        </View>
+        {/* <View style={styles.closeIcon}>
           <MaterialCommunityIcons name="menu" color="white" size={35} />
         </View>
         <View style={styles.createIcon}>
@@ -73,12 +95,13 @@ function MainScreen(props) {
         <View style={styles.quick_createIcon}>
           <Entypo name="paper-plane" size={35} color="white" />
         </View>
+
         <View style={styles.deleteIcon}>
           <Image
             style={styles.profil_image}
             source={require("../assets/mosh.jpg")}
           />
-        </View>
+        </View> */}
 
         <View style={styles.sets_list}>
           <FlatList
@@ -134,6 +157,11 @@ function MainScreen(props) {
 }
 
 const styles = StyleSheet.create({
+  menuContainer: {
+    paddingTop: 40,
+    flexDirection: "row"
+  },
+
   deleteIcon: {
     width: 52,
     height: 52,
