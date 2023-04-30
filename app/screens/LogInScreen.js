@@ -20,64 +20,60 @@ const validationSchema = Yup.object().shape({
 
 function LogInScreen(props) {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require("../assets/background.jpg")}
-        resizeMode="cover"
-        style={defaultStyles.bgimage}
-      >
-        <Screen style={styles.secContainer}>
-          <Image
-            style={styles.logo}
-            source={require("../images/logo-red.png")}
+    <ImageBackground
+      source={require("../assets/background.jpg")}
+      resizeMode="cover"
+      style={styles.background}
+    >
+      <View style={defaultStyles.logoContainer}>
+        <Image
+          style={defaultStyles.logo}
+          source={require("../images/logo-red.png")}
+        />
+      </View>
+
+      <View style={styles.formContainer}>
+        <AppForm
+          initialValues={{ email: "", password: "" }}
+          onSubmit={values => console.log(values)}
+          validationSchema={validationSchema}
+        >
+          <AppFormField
+            icon="email"
+            autoCapitalize="none"
+            autoCorrecr={false}
+            placeholder="Email"
+            keyboardType="email-address"
+            textContentType="emailAddress"
+            name="email"
+          />
+          <AppFormField
+            icon="lock"
+            autoCapitalize="none"
+            autoCorrect={false}
+            placeholder="Password"
+            textContentType="password"
+            secureTextEntry
+            name="password"
           />
 
-          <AppForm
-            initialValues={{ email: "", password: "" }}
-            onSubmit={values => console.log(values)}
-            validationSchema={validationSchema}
-          >
-            <AppFormField
-              icon="email"
-              autoCapitalize="none"
-              autoCorrecr={false}
-              placeholder="Email"
-              keyboardType="email-address"
-              textContentType="emailAddress"
-              name="email"
-            />
-            <AppFormField
-              icon="lock"
-              autoCapitalize="none"
-              autoCorrect={false}
-              placeholder="Password"
-              textContentType="password"
-              secureTextEntry
-              name="password"
-            />
-
-            <View style={{ marginTop: 10 }}>
-              <SubmitButton title="log in" />
-            </View>
-          </AppForm>
-        </Screen>
-      </ImageBackground>
-    </View>
+          <View style={{ marginTop: 10 }}>
+            <SubmitButton title="log in" />
+          </View>
+        </AppForm>
+      </View>
+    </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
+  formContainer: {
+    padding: 20,
+    paddingTop: 185
   },
-  secContainer: {
-    padding: 5
-  },
-  logo: {
-    height: 149,
-    width: 187,
-    alignSelf: "center",
-    marginTop: 0,
-    marginBottom: 0
+  background: {
+    flex: 1,
+
+    alignItems: "center"
   }
 });
 

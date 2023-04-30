@@ -3,32 +3,38 @@ import { View } from "react-native";
 import { ImageBackground, StyleSheet, Image, Text } from "react-native";
 import AppButton from "../components/AppButton";
 import useColorScheme from "react-native/Libraries/Utilities/useColorScheme";
-import colors from "C:/Users/Dorota/Desktop/MakeAppDone/MakeItDone/app/config/colors";
+import colors from "C:/Users/Dorota/Desktop/MakeAppDone/LearnItalianFree/app/config/colors";
+import Screen from "../components/Screen";
+import defaultStyles from "../config/styles";
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      blurRadius={5}
       style={styles.background}
-      source={require("../images/background.jpg")}
+      resizeMode="cover"
+      source={require("../assets/background.jpg")}
     >
-      <View style={styles.logoContainer}>
+      <View style={defaultStyles.logoContainer}>
         <Image
-          style={styles.logo}
+          style={defaultStyles.logo}
           source={require("../images/logo-red.png")}
         ></Image>
-        <Text style={styles.tagline}>sell what you don't need</Text>
+        <Text style={styles.tagline}>
+          Memorize words from your lessons. {"\n"}
+          Forever for free
+        </Text>
       </View>
 
       <View style={styles.buttonsContainer}>
         <AppButton
           title="login"
-          onPress={() => console.log("tapped")}
+          onPress={() => navigation.navigate("LogIn")}
         ></AppButton>
+        <Text> </Text>
         <AppButton
           title="register"
-          onPress={() => console.log("regitapped")}
-          color="secondary"
+          onPress={() => navigation.navigate("Register")}
+          color="logo"
         ></AppButton>
       </View>
     </ImageBackground>
@@ -38,6 +44,7 @@ function WelcomeScreen(props) {
 const styles = StyleSheet.create({
   buttonsContainer: {
     padding: 20,
+    paddingBottom: 70,
     width: "100%"
   },
   background: {
@@ -45,21 +52,28 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center"
   },
+  container: {
+    flex: 1
+  },
 
   logo: {
-    width: 100,
-    height: 100
+    width: 180,
+    height: 140,
+    alignSelf: "center",
+    marginTop: 0,
+    marginBottom: 0
   },
   logoContainer: {
     position: "absolute",
-    top: 70,
+    top: 50,
     alignItems: "center"
   },
   tagline: {
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: "bold",
     paddingVertical: 20,
-    textTransform: "capitalize"
+    textAlign: "center",
+    color: defaultStyles.colors.light
   }
 });
 
