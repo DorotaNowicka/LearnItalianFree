@@ -6,7 +6,8 @@ import {
   StyleSheet,
   ImageBackground,
   Text,
-  Button
+  Button,
+  StatusBar
 } from "react-native";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -68,40 +69,51 @@ function MainScreen({ navigation }) {
         style={defaultStyles.bgimage}
       >
         <View style={styles.menuContainer}>
-          <MenuButton
+          {/* <MenuButton
             icon="menu"
             onPress={() => navigation.navigate(routes.MAIN)}
             backgroundColor="menu"
-          ></MenuButton>
+          >
+            <MaterialCommunityIcons
+              name="menu"
+              size={35}
+              color={defaultStyles.colors.white}
+            />
+          </MenuButton> */}
           <MenuButton
-            icon="draw-pen"
-            onPress={() => navigation.navigate(routes.CONFIGURE)}
-            backgroundColor="secondary"
-          ></MenuButton>
-          <MenuButton
-            icon="paper-plane"
-            materialCommunity={false}
-            entypo={true}
-            onPress={() => navigation.navigate(routes.QUICK_CREATE)}
-            backgroundColor="good"
-          ></MenuButton>
-        </View>
-        {/* <View style={styles.closeIcon}>
-          <MaterialCommunityIcons name="menu" color="white" size={35} />
-        </View>
-        <View style={styles.createIcon}>
-          <MaterialCommunityIcons name="draw-pen" color="white" size={35} />
-        </View>
-        <View style={styles.quick_createIcon}>
-          <Entypo name="paper-plane" size={35} color="white" />
-        </View>
+            style={{ alignSelf: "flex-start" }}
+            //style={{ position: "absolute", right: 2, top: 40 }}
+            onPress={() => navigation.navigate(routes.ACCOUNT)}
+          >
+            <Image
+              style={styles.profil_image}
+              source={require("../assets/mosh.jpg")}
+            />
+          </MenuButton>
+          <View style={styles.createButtons}>
+            <MenuButton
+              onPress={() => navigation.navigate(routes.CONFIGURE)}
+              backgroundColor="secondary"
+            >
+              <MaterialCommunityIcons
+                name="draw-pen"
+                size={35}
+                color={defaultStyles.colors.white}
+              />
+            </MenuButton>
 
-        <View style={styles.deleteIcon}>
-          <Image
-            style={styles.profil_image}
-            source={require("../assets/mosh.jpg")}
-          />
-        </View> */}
+            <MenuButton
+              onPress={() => navigation.navigate(routes.QUICK_CREATE)}
+              backgroundColor="good"
+            >
+              <Entypo
+                name="paper-plane"
+                size={35}
+                color={defaultStyles.colors.white}
+              />
+            </MenuButton>
+          </View>
+        </View>
 
         <View style={styles.sets_list}>
           <FlatList
@@ -145,11 +157,11 @@ function MainScreen({ navigation }) {
             title="Create set"
             onPress={() => console.log("create")}
           ></AppButton>
-          <AppButton
+          {/* <AppButton
             title="SEE ALL"
             onPress={() => console.log("see_all")}
             color="secondary"
-          ></AppButton>
+          ></AppButton> */}
         </View>
       </ImageBackground>
     </View>
@@ -159,6 +171,10 @@ function MainScreen({ navigation }) {
 const styles = StyleSheet.create({
   menuContainer: {
     paddingTop: 40,
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  createButtons: {
     flexDirection: "row"
   },
 
@@ -172,39 +188,7 @@ const styles = StyleSheet.create({
     top: 45,
     right: 1
   },
-  closeIcon: {
-    width: 52,
-    height: 52,
-    backgroundColor: colors.menu,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: 45,
-    left: 1,
-    borderRadius: 26
-  },
-  createIcon: {
-    width: 52,
-    height: 52,
-    backgroundColor: colors.secondary,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: 45,
-    right: 120,
-    borderRadius: 26
-  },
-  quick_createIcon: {
-    width: 52,
-    height: 52,
-    backgroundColor: colors.good,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "absolute",
-    top: 45,
-    right: 60,
-    borderRadius: 26
-  },
+
   container: {
     backgroundColor: colors.background,
     flex: 1
@@ -219,12 +203,11 @@ const styles = StyleSheet.create({
     borderRadius: 26
   },
   sets_list: {
-    marginTop: 100,
     paddingVertical: 10
   },
   buttonsContainer: {
     width: "100%",
-    height: 200,
+
     padding: 2,
 
     justifyContent: "space-around"

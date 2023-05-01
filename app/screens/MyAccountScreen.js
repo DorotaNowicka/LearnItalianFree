@@ -10,14 +10,16 @@ import * as Permissions from "expo-permissions";
 import Icon from "../components/Icon";
 import colors from "../config/colors";
 import AppButton from "../components/AppButton";
+import routes from "../navigation/routes";
 
 const menuItems = [
   {
-    title: "My listings",
+    title: "My statistics",
     icon: {
-      name: "format-list-bulleted",
+      name: "chart-bar",
       backgroundColor: colors.primary
-    }
+    },
+    targetScreen: routes.STATISTICS
   },
   {
     title: "My messages",
@@ -25,7 +27,7 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary
     },
-    targetScreen: "Messages"
+    targetScreen: routes.MESSAGES
   }
 ];
 
@@ -51,7 +53,7 @@ function MyAccountScreen({ navigation }) {
   };
 
   return (
-    <Screen style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <ListItem
           title="Mosh Hamedani"
@@ -84,7 +86,7 @@ function MyAccountScreen({ navigation }) {
         onPress={() => console.log("log out")}
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
       ></ListItem>
-    </Screen>
+    </View>
   );
 }
 
@@ -93,7 +95,8 @@ const styles = StyleSheet.create({
     marginVertical: 20
   },
   screen: {
-    backgroundColor: colors.light
+    backgroundColor: colors.light,
+    flex: 1
   }
 });
 

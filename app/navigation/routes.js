@@ -3,5 +3,8 @@ export default Object.freeze({
   MENU: "Menu",
   MAIN: "Main",
   CONFIGURE: "Configure",
-  QUICK_CREATE: "QuickCreate"
+  QUICK_CREATE: "QuickCreate",
+  ACCOUNT: "Account",
+  STATISTICS: "Statistics",
+  MESSAGES: "Messages"
 });

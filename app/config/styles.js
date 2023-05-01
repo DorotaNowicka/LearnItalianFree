@@ -9,8 +9,7 @@ export default {
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir"
   },
   bgimage: {
-    flex: 1,
-    height: "100%"
+    flex: 1
   },
   logo: {
     width: 180,

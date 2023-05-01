@@ -46,14 +46,20 @@ export default function App() {
   //return <QuickCreateScreen />;
   // return <MainScreen />;
   // return <LogInScreen />;
-  // return <TestScreen />;
+  //  return <TestScreen />;
   // return <LocalizationTest />;
   // return <ListeningDetailsScreen />;
   // return <RegisterScreen />;
 
+  // return (
+  //   <NavigationContainer>
+  //     <MainNavigator />
+  //   </NavigationContainer>
+  // );
+
   return (
     <NavigationContainer>
-      <MainNavigator />
+      <TabNavigator />
     </NavigationContainer>
   );
 }

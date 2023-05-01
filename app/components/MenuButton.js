@@ -6,15 +6,11 @@ import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 
 function MenuButton({
+  children,
   onPress,
-  icon,
-  title = "",
+  style,
   backgroundColor = "primary",
-  width = 52,
-  materialCommunity = true,
-  entypo = false,
-  size = 35,
-  color = "white"
+  width = 52
 }) {
   const radius = width / 2;
   return (
@@ -24,20 +20,13 @@ function MenuButton({
         { backgroundColor: defaultStyles.colors[backgroundColor] },
         { width: width },
         { height: width },
-        { borderRadius: radius }
+        { borderRadius: radius },
+        { margin: 2 },
+        style
       ]}
       onPress={onPress}
     >
-      {materialCommunity && (
-        <MaterialCommunityIcons
-          name={icon}
-          size={size}
-          color={defaultStyles.colors[color]}
-        />
-      )}
-      {entypo && (
-        <Entypo name={icon} size={size} color={defaultStyles.colors[color]} />
-      )}
+      {children}
     </TouchableOpacity>
   );
 }
